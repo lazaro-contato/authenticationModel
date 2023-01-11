@@ -1,5 +1,6 @@
 import { Inter } from '@next/font/google'
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
+import {AuthContext, AuthProvider} from "../context/AuthContext";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -7,14 +8,16 @@ export default function Home() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (event: FormEvent) => {
+  const {signIn} = useContext(AuthContext)
+
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     const data = {
       email,
       password,
     }
 
-    console.log(data)
+    await signIn(data)
   }
 
   return (
