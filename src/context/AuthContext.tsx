@@ -1,9 +1,9 @@
 import React, {createContext, ReactNode, useEffect, useState} from "react";
-import {api} from "../services/api";
 import Router from "next/router";
 import {destroyCookie, parseCookies, setCookie} from "nookies";
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
+import {api} from "../services/apiClient";
 
 interface SignInCredentials {
   email: string
